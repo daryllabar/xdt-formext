@@ -62,7 +62,9 @@ export class ExtendedContextBase {
         return ctrl;
     }
 
-    private isEventContext(e: XdtXrm.OnLoadEventContext | XdtXrm.PageBase<any, any, any>): e is XdtXrm.OnLoadEventContext {
+    private isEventContext(
+        e: XdtXrm.OnLoadEventContext | XdtXrm.PageBase<any, any, any>,
+    ): e is XdtXrm.OnLoadEventContext {
         return !!(e as XdtXrm.OnLoadEventContext).getFormContext;
     }
 }
