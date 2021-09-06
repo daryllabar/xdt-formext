@@ -99,7 +99,7 @@ describe("FormContextGenerator", () => {
 
 function getAllAttributesForm(prefix: string): string[] {
     // eslint-disable-next-line prettier/prettier
-return `declare namespace Form.unitTest.Main {
+    return `declare namespace Form.unitTest.Main {
   namespace FormName {
     namespace Tabs {
       interface Tab1Name extends ${prefix}.SectionCollectionBase {

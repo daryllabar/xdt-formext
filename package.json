@@ -8,6 +8,11 @@
     "build": "tsc",
     "format": "prettier ./src/**/*.ts --write",
     "lint": "eslint ./src/**/*.ts --fix",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
     "test": "jest",
     "test-watch": "jest --watch --maxWorkers=25% --detectOpenHandles"
   },
