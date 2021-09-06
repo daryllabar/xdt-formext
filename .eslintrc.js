@@ -10,11 +10,12 @@ module.exports = {
         "plugin:prettier/recommended"
     ],
     "ignorePatterns": [
+        "lib/**/*",
         ".eslintrc.js",
         ".prettierrc.js",
         "jest.config.js",
         "webpack.*",
-        "src/typings/**/*"],
+        "typings/**/*"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "createDefaultProgram": true,

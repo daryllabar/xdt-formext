@@ -1,6 +1,6 @@
 {
   "name": "xdt-formext",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Form Extensions for Delgateas\\XrmDefinitelyTyped",
   "main": "lib/index.js",
   "types": "lib/index.d.js",
@@ -8,7 +8,8 @@
     "build": "tsc",
     "format": "prettier ./src/**/*.ts --write",
     "lint": "eslint ./src/**/*.ts --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test-watch": "jest --watch --maxWorkers=25% --detectOpenHandles"
   },
   "repository": {
     "type": "git",
@@ -22,16 +23,26 @@
   },
   "homepage": "https://github.com/daryllabar/xdt-formext#readme",
   "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.10",
     "@types/xrm": "^9.0.43",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "jest": "^27.1.0",
+    "path": "^0.12.7",
     "prettier": "^2.3.2",
-    "typescript": "^4.4.2"
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.2",
+    "xrm-mock": "^3.5.4"
   },
   "files": [
-    "lib/**/*"
+    "/lib/context/**/*",
+    "/lib/mock/**/*",
+    "/lib/typings/*.d.ts",
+    "/lib/*.*"
   ]
 }
