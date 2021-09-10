@@ -1,1 +1,2 @@
-export * from "./extended";
+export { ExtendedContext, ExtendedFormContext } from "./extended";
+export { GenericPageContext } from "./genericPageContext";

@@ -1,15 +1,19 @@
 {
   "name": "xdt-formext",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Form Extensions for Delgateas\\XrmDefinitelyTyped",
-  "main": "lib/index.js",
-  "types": "lib/index.d.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
   "scripts": {
     "build": "tsc",
+    "buildPackage": "npm run clean && npm run build && node dist/setupPackage.js && npm run cleanSetupPackage && cd dist && npm pack",
+    "clean": "rmdir /s /q dist",
+    "cleanSetupPackage": "del-cli --force dist/setupPackage.*",
     "format": "prettier ./src/**/*.ts --write",
     "lint": "eslint ./src/**/*.ts --fix",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
+    "publishDist": "npm run buildPackage && cd dist && npm publish",
+    "prepare": "npm run clean && npm run build",
+    "prepublishOnly": "npm test && npm run lint && npm version patch",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
@@ -33,6 +37,7 @@
     "@types/xrm": "^9.0.43",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
+    "del-cli": "^4.0.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -45,9 +50,9 @@
     "xrm-mock": "^3.5.4"
   },
   "files": [
-    "/lib/context/**/*",
-    "/lib/mock/**/*",
-    "/lib/typings/*.d.ts",
-    "/lib/*.*"
+    "dist/context/**/*",
+    "dist/mock/**/*",
+    "dist/typings/*.d.ts",
+    "dist/*.*"
   ]
 }
