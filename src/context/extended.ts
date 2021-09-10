@@ -7,18 +7,63 @@ export interface ExtendedFormContext<
 > {
     /** Actual Xrm Form Context */
     context: XdtXrm.BasicPage;
+    /**
+     * Remove a message already displayed for a control.
+     * @param attributeName Attribute or Control name to clear the notification for.
+     * @param uniqueId Optional - The unique id of the notification to clear.  Defaults to "setNotification_" + attributeName
+     */
     clearNotification(attributeName: TFormAttributes["All"] | TFromControls["All"], uniqueId?: string): boolean;
+
+    /**
+     * Causes the OnChange event to occur on the column so that any script associated to that event can execute.
+     * @param attributeName The attribute name.
+     */
     fireOnChange(attributeName: TFormAttributes["All"]): void;
+
+    /**
+     * Returns whether the control is disabled.
+     * @param attributeName The attribute name.
+     */
     getDisabled(attributeName: TFormAttributes["All"]): boolean;
+
+    /**
+     * Gets the text value for the current attribute value.
+     * @param attributeName The attribute name.
+     */
     getDisplayValue(attributeName: TFormAttributes["All"]): string;
+
+    /**
+     * Returns the label for the control.
+     * @param attributeName The attribute or control name.
+     */
     getLabel(attributeName: string): string;
+
+    /**
+     * Returns true if the attribute is required.
+     * @param attributeName The attribute name.
+     */
     getRequired(attributeName: TFormAttributes["All"]): boolean;
+
+    /**
+     * Gets all sections for the current form.
+     */
     getSections(): XdtXrm.PageSection[];
+
+    /**
+     * Returns a string ("always" | "never" | "dirty") indicating when data from the attribute will be submitted when the record is saved.
+     */
     getSubmitMode(attributeName: string): XdtXrm.AttributeSubmitMode;
+
+    /**
+     * Returns true if every contorl for the given attribute/control is visible.
+     * @param attributeOrControl The attribute or control name.
+     * @param includeHierarchyVisibility Optional - If true or not included, the visibility of the section and tab is considered as well.  If false, the section and tab is not considered when returning visibilty, only the control(s).
+     */
     getVisible(
         attributeOrControl: TFormAttributes["All"] | TFromControls["All"],
         includeHierarchyVisibility?: boolean,
     ): boolean;
+
     initializeFormattedValue(
         attributeName: TFormAttributes["String"],
         format: string,
