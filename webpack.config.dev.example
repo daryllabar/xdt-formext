@@ -2,6 +2,14 @@ const { merge } = require('webpack-merge');
 const sharedConfig = require('./webpack.config.shared');
 module.exports = merge(sharedConfig, {
     mode: 'development',
+    devServer: {
+        contentBase: Path.join(__dirname, './WebResources'),
+        compress: true,
+        injectClient: false,
+        injectHot: false,
+        writeToDisk: true,
+        port: 9000
+    },
     optimization: {
         minimize: false
     },
