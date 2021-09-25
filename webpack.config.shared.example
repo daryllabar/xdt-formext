@@ -1,0 +1,90 @@
+// Update "Prefix" to solution prefix
+const Path = require('path');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const Webpack = require('webpack');
+
+const entries = {};
+const forms = [
+    "account"
+];
+const page = [
+    // "somePage"
+];
+
+const ribbon = [
+    // "someRibbon"
+];
+
+forms.forEach((f) => {
+    entries[f] = {
+        import: `./src/forms/${f}.ts`,
+        filename: `forms/${f}.js`,
+        library: {
+            type: 'var',
+            name: ['Prefix', 'Form']
+        }
+    };
+});
+
+page.forEach((f) => {
+    entries[f] = {
+        import: `./src/page/${f}.ts`,
+        filename: `page/${f}.js`,
+        library: {
+            type: 'var',
+            name: ['Prefix', 'Page']
+        }
+    };
+});
+
+ribbon.forEach((f) => {
+    entries[f] = {
+        import: `./src/ribbon/${f}.ts`,
+        filename: `ribbon/${f}.js`,
+        library: {
+            type: 'var',
+            name: ['Prefix', 'Ribbon']
+        }
+    };
+});
+
+module.exports = {
+    devtool: 'source-map',
+    entry: entries,
+    output: {
+        clean: {
+            keep: /external\//
+        },
+        filename: '[name].js',
+        library: ['prefix', '[name]'],
+        libraryTarget: 'var',
+        path: Path.resolve(__dirname, './Webresources/prefix_/js'),
+        publicPath: Path.resolve(__dirname, './Webresources'),
+        sourceMapFilename: '[file].map',
+    },
+    module: {
+        rules: [{
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/,
+        }, {
+            test: require.resolve("./src/lib/dg.xrmquery.web.min"),
+            loader: "exports-loader",
+            options: {
+                exports: ["XrmQuery", "Filter", "XQW"]
+            }
+        }, ],
+    },
+    plugins: [
+        new ESLintPlugin({ fix: true, extensions: ['ts', 'tsx'], lintDirtyModulesOnly: true, failOnError: true }),
+        new Webpack.ProvidePlugin({
+            XrmQuery: [Path.resolve(__dirname, "./src/lib/dg.xrmquery.web.min"), "XrmQuery"],
+            Filter: [Path.resolve(__dirname, "./src/lib/dg.xrmquery.web.min"), "Filter"],
+            XQW: [Path.resolve(__dirname, "./src/lib/dg.xrmquery.web.min"), "XQW"],
+        })
+    ],
+    resolve: {
+        extensions: ['.ts', '.js'],
+    }
+};
+
