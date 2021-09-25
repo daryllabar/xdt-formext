@@ -1,6 +1,5 @@
 // Update "Prefix" to solution prefix
 const Path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
 const Webpack = require('webpack');
 
 const entries = {};
@@ -76,7 +75,6 @@ module.exports = {
         }, ],
     },
     plugins: [
-        new ESLintPlugin({ fix: true, extensions: ['ts', 'tsx'], lintDirtyModulesOnly: true, failOnError: true }),
         new Webpack.ProvidePlugin({
             XrmQuery: [Path.resolve(__dirname, "./src/lib/dg.xrmquery.web.min"), "XrmQuery"],
             Filter: [Path.resolve(__dirname, "./src/lib/dg.xrmquery.web.min"), "Filter"],
