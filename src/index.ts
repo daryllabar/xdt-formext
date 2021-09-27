@@ -1,4 +1,3 @@
-export * from "./mock";
 export * from "./baseForm";
 export * from "./delay";
 export * from "./equalExt";
