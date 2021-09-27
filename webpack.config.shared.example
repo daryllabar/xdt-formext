@@ -16,8 +16,8 @@ const ribbon = [
 
 forms.forEach((f) => {
     entries[f] = {
-        import: `./src/forms/${f}.ts`,
-        filename: `forms/${f}.js`,
+        import: `./src/form/${f}.ts`,
+        filename: `form/${f}.js`,
         library: {
             type: 'var',
             name: ['Prefix', 'Form']
