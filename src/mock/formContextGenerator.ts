@@ -199,9 +199,7 @@ function parseGetControlLine(line: string, state: State): void {
     type = type.substr(type.indexOf(".") + 1).split(";")[0];
     if (name.startsWith("footer_") || name.startsWith("header_")) {
         let control = undefined as Xrm.Controls.Control | undefined;
-        const attForControl = name.startsWith("header_process_")
-            ? (XrmMockGenerator.formContext.getAttribute(name.substr(15)) as any)
-            : (XrmMockGenerator.formContext.getAttribute(name.substr(7)) as any);
+        const attForControl = GetAttributeForControl(name);
         if (attForControl) {
             switch (type) {
                 case "StringControl":
@@ -231,6 +229,18 @@ function parseGetControlLine(line: string, state: State): void {
             state.controlsByName.set(control.getName(), control);
         }
     }
+}
+
+function GetAttributeForControl(name: string): any {
+    name = name.startsWith("header_process_") ? name.substr(15) : name.substr(7);
+    let att = XrmMockGenerator.formContext.getAttribute(name);
+    if (!att && name.indexOf("_") > 0) {
+        const index = name.lastIndexOf("_");
+        if (!isNaN(Number(name.substr(index + 1)))) {
+            att = XrmMockGenerator.formContext.getAttribute(name.substr(0, index));
+        }
+    }
+    return att;
 }
 
 function associateControlToSection(state: State) {
