@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-namespace
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-namespace
 declare namespace XdtXrm {
     export type EmptyFormAttributes = FormAttributesBase<
         string,
