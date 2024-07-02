@@ -158,20 +158,20 @@ function parseGetAttributeLine(line: string, state: State): void {
     }
     switch (type) {
         case "Attribute":
-            att = XrmMockGenerator.Attribute.createString(name);
+            att = XrmMockGenerator.Attribute.createString(name) as any;
             break;
         case "DateAttribute":
-            att = XrmMockGenerator.Attribute.createDate(name);
+            att = XrmMockGenerator.Attribute.createDate(name) as any;
             break;
         case "LookupAttribute":
-            att = XrmMockGenerator.Attribute.createLookup(name, []);
+            att = XrmMockGenerator.Attribute.createLookup(name, []) as any;
             break;
         case "MultiSelectOptionSetAttribute":
         case "OptionSetAttribute":
-            att = XrmMockGenerator.Attribute.createOptionSet(name);
+            att = XrmMockGenerator.Attribute.createOptionSet(name) as any;
             break;
         case "NumberAttribute":
-            att = XrmMockGenerator.Attribute.createNumber(name);
+            att = XrmMockGenerator.Attribute.createNumber(name) as any;
             break;
         default:
             break;

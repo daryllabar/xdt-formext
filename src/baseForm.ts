@@ -44,6 +44,23 @@ export abstract class BaseForm<
         this.formName = formName;
     }
 
+    /**
+     * Prevents issues of "this" not refering to the form when calling add on change.
+     * @param attributeNames The name of names of attributes to add the on change event to.
+     * @param handler The method to call on change.
+     */
+    addOnChange(
+        attributeNames: TFormAttributes["All"] | TFormAttributes["All"][],
+        handler: (context?: XdtXrm.ExecutionContext<XdtXrm.Attribute<any>, undefined>) => any,
+    ): void {
+        (this.context as any).addOnChange(
+            attributeNames,
+            (c: XdtXrm.ExecutionContext<XdtXrm.Attribute<any>, undefined> | undefined) => {
+                handler.call(this, c);
+            },
+        );
+    }
+
     showAndLogError(
         displayMessage: string,
         // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
