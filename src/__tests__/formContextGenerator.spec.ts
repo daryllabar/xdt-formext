@@ -13,6 +13,7 @@ describe("FormContextGenerator", () => {
             multilookup_att: "lookup",
             number_att: "decimal",
             os_att: "optionset",
+            bool_att: "boolean",
             string_att: "string",
         } as { [index: string]: string };
         for (const prefix of _prefixes) {
@@ -38,6 +39,7 @@ describe("FormContextGenerator", () => {
             multilookup_att: { type: "lookup" },
             number_att: { type: "standard" },
             os_att: { type: "optionset" },
+            bool_att: { type: "standard" },
             string_att: { type: "standard" },
             footer_string_att: { att: "string_att", type: "standard" },
             header_string_att: { att: "string_att", type: "standard" },
@@ -127,6 +129,7 @@ function getAllAttributesForm(prefix: string): string[] {
       get(name: "multilookup_att"): ${prefix}.LookupAttribute<"entity1" | "entity2">;
       get(name: "number_att"): ${prefix}.NumberAttribute;
       get(name: "os_att"): ${prefix}.OptionSetAttribute<os_enum>;
+      get(name: "bool_att"): ${prefix}.OptionSetAttribute<boolean>;
       get(name: "string_att"): ${prefix}.Attribute<string>;
       get(name: string): undefined;
       get(): ${prefix}.Attribute<any>[];
@@ -142,6 +145,7 @@ function getAllAttributesForm(prefix: string): string[] {
       get(name: "multilookup_att"): ${prefix}.LookupControl<"entity1" | "entity2">;
       get(name: "number_att"): ${prefix}.NumberControl;
       get(name: "os_att"): ${prefix}.OptionSetControl<os_enum>;
+      get(name: "bool_att"): ${prefix}.OptionSetControl<boolean>;
       get(name: "string_att"): ${prefix}.StringControl;    
       get(name: "footer_string_att"): ${prefix}.StringControl;
       get(name: "header_string_att"): ${prefix}.StringControl;
@@ -168,6 +172,7 @@ function getAllAttributesForm(prefix: string): string[] {
     getAttribute(attributeName: "multilookup_att"): ${prefix}.LookupAttribute<"entity1" | "entity2">;
     getAttribute(attributeName: "number_att"): ${prefix}.NumberAttribute;
     getAttribute(attributeName: "os_att"): ${prefix}.OptionSetAttribute<os_enum>;
+    getAttribute(attributeName: "bool_att"): ${prefix}.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "string_att"): ${prefix}.Attribute<string>;
     getAttribute(attributeName: string): undefined;
     getControl(controlName: "any_att"): ${prefix}.Control<${prefix}.Attribute<any>>;
@@ -178,6 +183,7 @@ function getAllAttributesForm(prefix: string): string[] {
     getControl(controlName: "multilookup_att"): ${prefix}.LookupControl<"entity1" | "entity2">;
     getControl(controlName: "number_att"): ${prefix}.NumberControl;
     getControl(controlName: "os_att"): ${prefix}.OptionSetControl<os_enum>;
+    getControl(attributeName: "bool_att"): ${prefix}.OptionSetControl<boolean>;
     getControl(controlName: "string_att"): ${prefix}.StringControl;    
     getControl(controlName: "footer_string_att"): ${prefix}.StringControl;
     getControl(controlName: "header_string_att"): ${prefix}.StringControl;

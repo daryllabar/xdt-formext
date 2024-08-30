@@ -148,7 +148,7 @@ function parseGetAttributeLine(line: string, state: State): void {
     const name = line.split('"')[1];
     const fullType = line.split(":")[2];
     let type = fullType.split("<")[0];
-    type = type.substr(type.indexOf(".") + 1).split(";")[0];
+    type = type.substring(type.indexOf(".") + 1).split(";")[0];
     if (fullType.split(".")[1] === "Attribute<any>;") {
         if (name.length > 6 && name.substring(0, 6) === "record") {
             type = "LookupAttribute";
@@ -168,7 +168,11 @@ function parseGetAttributeLine(line: string, state: State): void {
             break;
         case "MultiSelectOptionSetAttribute":
         case "OptionSetAttribute":
-            att = XrmMockGenerator.Attribute.createOptionSet(name) as any;
+            if (fullType.trimEnd().endsWith("OptionSetAttribute<boolean>;")) {
+                att = XrmMockGenerator.Attribute.createBoolean(name) as any;
+            } else {
+                att = XrmMockGenerator.Attribute.createOptionSet(name) as any;
+            }
             break;
         case "NumberAttribute":
             att = XrmMockGenerator.Attribute.createNumber(name) as any;
@@ -196,7 +200,7 @@ function parseGetControlLine(line: string, state: State): void {
 
     const fullType = line.split(":")[2];
     let type = fullType.split("<")[0];
-    type = type.substr(type.indexOf(".") + 1).split(";")[0];
+    type = type.substring(type.indexOf(".") + 1).split(";")[0];
     if (name.startsWith("footer_") || name.startsWith("header_")) {
         let control = undefined as Xrm.Controls.Control | undefined;
         const attForControl = GetAttributeForControl(name);

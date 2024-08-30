@@ -1,6 +1,6 @@
 {
   "name": "xdt-formext",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Form Extensions for Delgateas\\XrmDefinitelyTyped",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
