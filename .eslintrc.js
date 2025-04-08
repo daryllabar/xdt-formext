@@ -15,7 +15,8 @@ module.exports = {
         ".prettierrc.js",
         "jest.config.js",
         "webpack.*",
-        "typings/**/*"],
+        "typings/**/*",
+        "dist/**/*"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "createDefaultProgram": true,

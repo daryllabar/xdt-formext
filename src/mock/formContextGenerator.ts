@@ -135,7 +135,13 @@ function parseGetSectionLine(line: string, state: State): void {
     const name = line.split('"')[1];
     state.sectionByName.set(
         name,
-        XrmMockGenerator.Section.createSection(name, undefined, undefined, state.tab, new ItemCollectionMock()),
+        XrmMockGenerator.Section.createSection(
+            name,
+            undefined,
+            undefined,
+            state.tab,
+            new ItemCollectionMock<Xrm.Controls.Control>(),
+        ),
     );
 }
 
@@ -181,7 +187,7 @@ function parseGetAttributeLine(line: string, state: State): void {
             break;
     }
     if (att) {
-        state.controlsByName.set(att.getName(), att.controls.get()[0]);
+        state.controlsByName.set(att.getName(), (att.controls.get() as Xrm.Controls.StandardControl[])[0]);
     }
 }
 

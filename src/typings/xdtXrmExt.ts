@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-namespace
-declare namespace XdtXrm {
+declare namespace XdtXrmToBeInjectedViaXdtPostProcessor {
     export type EmptyFormAttributes = FormAttributesBase<
         string,
         string,
@@ -82,7 +82,7 @@ declare namespace XdtXrm {
     /**
      * Interface for a generic XdtXrm.Page
      */
-    export interface FormContext extends PageBase<any, any, any> {
+    export interface FormContext extends XdtXrm.PageBase<any, any, any> {
         /**
          * Generic getAttribute
          */

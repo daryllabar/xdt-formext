@@ -1,6 +1,6 @@
 {
   "name": "xdt-formext",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Form Extensions for Delgateas\\XrmDefinitelyTyped",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -33,8 +33,8 @@
   "homepage": "https://github.com/daryllabar/xdt-formext#readme",
   "devDependencies": {
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.9",
-    "@types/xrm": "^9.0.80",
+    "@types/node": "^22.14.0",
+    "@types/xrm": "^9.0.84",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
     "del-cli": "^5.1.0",
@@ -46,7 +46,7 @@
     "prettier": "^3.3.2",
     "ts-jest": "^29.1.5",
     "typescript": "^5.5.3",
-    "xrm-mock": "^3.5.9"
+    "xrm-mock": "^3.6.2"
   },
   "files": [
     "dist/context/**/*",
