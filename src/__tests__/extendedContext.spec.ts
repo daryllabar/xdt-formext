@@ -364,11 +364,11 @@ describe("ExtendedContexts Tests", () => {
         });
     });
     describe("setValue", () => {
-        test("set null lookup SHOULD set empty array", () => {
+        test("set null lookup SHOULD set null", () => {
             const att = _sut.getAttribute("parentaccountid");
             att?.setValue([_account]);
             _sut.setValue("parentaccountid", null);
-            expect(att?.getValue()).toStrictEqual([]);
+            expect(att?.getValue()).toStrictEqual(null);
         });
         test("set value lookup SHOULD set array", () => {
             const att = _sut.getAttribute("parentaccountid");

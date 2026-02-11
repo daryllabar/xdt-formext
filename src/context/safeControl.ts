@@ -116,7 +116,9 @@ export class SafeControlContext extends SafeAttributeContext {
             if (options.setRequired === false) {
                 return;
             }
-            this.setRequiredOnSetVisible(options, ctrl.getAttribute().getName(), visible);
+            // For PCF Controls, they may not have an actual attribute associated with them, so default to attributeName if no attribute is found for the control.
+            const attName = ctrl.getAttribute()?.getName() ?? attributeName;
+            this.setRequiredOnSetVisible(options, attName, visible);
         });
     }
 

@@ -39,7 +39,7 @@ describe("FormContextGenerator", () => {
             multilookup_att: { type: "lookup" },
             number_att: { type: "standard" },
             os_att: { type: "optionset" },
-            bool_att: { type: "standard" },
+            bool_att: { type: "optionset" },
             string_att: { type: "standard" },
             footer_string_att: { att: "string_att", type: "standard" },
             header_string_att: { att: "string_att", type: "standard" },
