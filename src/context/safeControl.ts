@@ -117,7 +117,8 @@ export class SafeControlContext extends SafeAttributeContext {
                 return;
             }
             // For PCF Controls, they may not have an actual attribute associated with them, so default to attributeName if no attribute is found for the control.
-            const attName = ctrl.getAttribute()?.getName() ?? attributeName;
+            const attName =
+                (ctrl.getAttribute()?.getName ? ctrl.getAttribute()?.getName() : attributeName) ?? attributeName;
             this.setRequiredOnSetVisible(options, attName, visible);
         });
     }
